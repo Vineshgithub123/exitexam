@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 const { options } = require('nodemon/lib/config');
 const { application } = require('express');
 const app = new express()
+const db = 'mongodb+srv://Vinauthapp:OTJSLl0mTNZu2gi3@authapp.zkkbbzk.mongodb.net/?retryWrites=true&w=majority'
 require("dotenv").config('.env');
 app.use(cors());
 app.use(express.json({limit: '50mb'}));
@@ -14,7 +15,7 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 app.use(express.static('dist/app-backend'));
 
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(db, {
     useNewUrlParser: true,
 })
     .then(() => console.log("MongoDB Connected..."))
@@ -87,6 +88,6 @@ var transporter = nodemailer.createTransport({
 app.get('/*', (req, res)=> {
     res.sendFile(path.join(__dirname + '/dist//app-backend/index.html'))})
   
-app.listen(process.env.PORT,()=>{
+app.listen(4000,()=>{
     console.log("Server Ready ");
 });
