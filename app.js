@@ -4,8 +4,7 @@ const bodyparser = require('body-parser')
 const mongoose = require("mongoose");
 const usermodel = require('./src/models/datamodel')
 const nodemailer = require("nodemailer");
-const { options } = require('nodemon/lib/config');
-const { application } = require('express');
+const path = require('path');
 const app = new express()
 const db = 'mongodb+srv://Vinauthapp:OTJSLl0mTNZu2gi3@authapp.zkkbbzk.mongodb.net/?retryWrites=true&w=majority'
 
