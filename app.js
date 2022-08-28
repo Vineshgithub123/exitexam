@@ -88,6 +88,6 @@ var transporter = nodemailer.createTransport({
 app.get('/*', (req, res)=> {
     res.sendFile(path.join(__dirname + '/dist//app-backend/index.html'))})
   
-app.listen(4000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("Server Ready ");
 });
