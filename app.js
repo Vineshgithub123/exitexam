@@ -14,7 +14,7 @@ app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000
 app.use(express.static('dist/app-backend'));
 
 
-mongoose.connect(db, {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
 })
     .then(() => console.log("MongoDB Connected..."))
@@ -87,6 +87,6 @@ var transporter = nodemailer.createTransport({
 app.get('/*', (req, res)=> {
     res.sendFile(path.join(__dirname + '/dist//app-backend/index.html'))})
   
-app.listen(4000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("Server Ready ");
 });
